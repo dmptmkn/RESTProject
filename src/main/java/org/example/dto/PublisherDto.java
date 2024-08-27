@@ -7,10 +7,9 @@ import java.util.List;
 
 @Value
 @Builder
-public class AuthorDTO {
+public class PublisherDto {
 
     String name;
-    String lastName;
+    List<String> authors;
     List<String> books;
-    List<String> publishers;
 }

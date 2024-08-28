@@ -18,7 +18,7 @@ public class PublisherServiceImpl implements PublisherService {
     @Getter
     private static final PublisherServiceImpl instance = new PublisherServiceImpl();
 
-    private final PublisherRepository repository = PublisherRepositoryImpl.getInstance();
+    private PublisherRepository repository = PublisherRepositoryImpl.getInstance();
     private final PublisherMapper mapper = PublisherMapper.getInstance();
 
     @Override

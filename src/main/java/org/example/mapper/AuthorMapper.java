@@ -16,7 +16,8 @@ public class AuthorMapper implements Mapper<Author, AuthorDto> {
 
     @Override
     public AuthorDto mapFrom(Author author) {
-        if (author == null) throw new IllegalArgumentException();
+        if (author == null) return null;
+
         return AuthorDto.builder()
                 .name(author.getName())
                 .lastName(author.getLastName())

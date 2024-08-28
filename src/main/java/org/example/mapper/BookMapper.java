@@ -14,6 +14,8 @@ public class BookMapper implements Mapper<Book, BookDto> {
 
     @Override
     public BookDto mapFrom(Book book) {
+        if (book == null) return null;
+
         return BookDto.builder()
                 .title(book.getTitle())
                 .author(book.getAuthor().getName() + " " + book.getAuthor().getLastName())

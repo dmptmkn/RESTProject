@@ -18,7 +18,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Getter
     private static final AuthorServiceImpl instance = new AuthorServiceImpl();
 
-    private final AuthorRepository repository = AuthorRepositoryImpl.getInstance();
+    private AuthorRepository repository = AuthorRepositoryImpl.getInstance();
     private final AuthorMapper mapper = AuthorMapper.getInstance();
 
     @Override

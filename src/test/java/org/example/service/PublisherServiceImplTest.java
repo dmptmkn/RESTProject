@@ -1,10 +1,12 @@
 package org.example.service;
 
-import org.example.dto.BookDto;
-import org.example.entity.Book;
-import org.example.mapper.BookMapper;
-import org.example.repository.impl.BookRepositoryImpl;
-import org.example.service.impl.BookServiceImpl;
+import org.example.dto.AuthorDto;
+import org.example.dto.PublisherDto;
+import org.example.entity.Author;
+import org.example.entity.Publisher;
+import org.example.mapper.PublisherMapper;
+import org.example.repository.impl.PublisherRepositoryImpl;
+import org.example.service.impl.PublisherServiceImpl;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,13 +24,13 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
-class BookServiceImplTest {
+class PublisherServiceImplTest {
 
     @Mock
-    private BookRepositoryImpl repository;
-    private BookMapper mapper = BookMapper.getInstance();
+    private PublisherRepositoryImpl repository;
+    private PublisherMapper mapper = PublisherMapper.getInstance();
     @InjectMocks
-    private BookServiceImpl service;
+    private PublisherServiceImpl service;
 
     @Test
     @DisplayName("findById throws exception when argument is null")
@@ -46,13 +48,13 @@ class BookServiceImplTest {
     @Test
     @DisplayName("findById returns expected object when called")
     void testFindById_ShouldReturnExpectedDTO_WhenCalled() {
-        Book testBook = Instancio.create(Book.class);
-        Mockito.doReturn(testBook).when(repository).findById(Mockito.anyInt());
+        Publisher testPublisher = Instancio.create(Publisher.class);
+        Mockito.doReturn(testPublisher).when(repository).findById(Mockito.anyInt());
 
-        BookDto expectedBookDto = mapper.mapFrom(testBook);
-        BookDto actualBookDto = service.findById(1);
+        PublisherDto expectedPublisherDto = mapper.mapFrom(testPublisher);
+        PublisherDto actualPublisherDto = service.findById(1);
 
-        assertEquals(expectedBookDto, actualBookDto);
+        assertEquals(expectedPublisherDto, actualPublisherDto);
     }
 
     @Test
@@ -68,25 +70,25 @@ class BookServiceImplTest {
     @DisplayName("findById should return null when object is not in the database")
     void testFindById_ShouldReturnNull_WhenObjectIsNotInTheDB() {
         Mockito.doReturn(null).when(repository).findById(255);
-        BookDto actualBookDto = service.findById(255);
+        PublisherDto actualAuthorDto = service.findById(255);
 
-        assertNull(actualBookDto);
+        assertNull(actualAuthorDto);
     }
 
     @Test
     @DisplayName("findAll returns expected objects when called")
     void testFindAll_ShouldReturnExpectedDTOs_WhenCalled() {
-        List<Book> authors = new ArrayList<>();
+        List<Publisher> authors = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            authors.add(Instancio.create(Book.class));
+            authors.add(Instancio.create(Publisher.class));
         }
 
         Mockito.doReturn(authors).when(repository).findAll();
 
-        List<BookDto> expectedBookDtos = authors.stream().map(mapper::mapFrom).toList();
-        List<BookDto> actualBookDtos = service.findAll();
+        List<PublisherDto> expectedPublisherDtos = authors.stream().map(mapper::mapFrom).toList();
+        List<PublisherDto> actualPublisherDtos = service.findAll();
 
-        assertEquals(expectedBookDtos, actualBookDtos);
+        assertEquals(expectedPublisherDtos, actualPublisherDtos);
     }
 
     @Test
@@ -97,4 +99,5 @@ class BookServiceImplTest {
 
         Mockito.verify(repository, Mockito.times(1)).findAll();
     }
+
 }

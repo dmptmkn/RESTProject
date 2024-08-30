@@ -25,11 +25,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class AuthorServiceImplTest {
 
     @Mock
-    AuthorRepositoryImpl repository;
-    AuthorMapper mapper = AuthorMapper.getInstance();
-
+    private AuthorRepositoryImpl repository;
+    private AuthorMapper mapper = AuthorMapper.getInstance();
     @InjectMocks
-    AuthorServiceImpl service;
+    private AuthorServiceImpl service;
 
     @Test
     @DisplayName("findById throws exception when argument is null")

@@ -20,5 +20,4 @@ public class Author {
     private String lastName;
     private List<Book> books;
     private List<Publisher> publishers;
-
 }

@@ -18,7 +18,7 @@ public class BookServiceImpl implements BookService {
     @Getter
     private static final BookServiceImpl instance = new BookServiceImpl();
 
-    private final BookRepository repository = BookRepositoryImpl.getInstance();
+    private BookRepository repository = BookRepositoryImpl.getInstance();
     private final BookMapper mapper = BookMapper.getInstance();
 
     @Override

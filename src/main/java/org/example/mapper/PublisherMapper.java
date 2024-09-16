@@ -15,6 +15,8 @@ public class PublisherMapper implements Mapper<Publisher, PublisherDto> {
 
     @Override
     public PublisherDto mapFrom(Publisher publisher) {
+        if (publisher == null) return null;
+
         return PublisherDto.builder()
                 .name(publisher.getName())
                 .books(publisher.getBooks().stream()

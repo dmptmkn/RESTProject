@@ -16,7 +16,7 @@ import java.io.IOException;
 @WebServlet(value = "/publisher/*")
 public class PublisherController extends HttpServlet {
 
-    private final transient PublisherService service = PublisherServiceImpl.getInstance();
+    private transient PublisherService service = PublisherServiceImpl.getInstance();
     private final ObjectMapper objectMapper;
 
     private static final String BAD_REQUEST = "Bad request";

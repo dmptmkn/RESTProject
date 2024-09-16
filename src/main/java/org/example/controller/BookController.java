@@ -16,7 +16,7 @@ import java.io.IOException;
 @WebServlet(value = "/book/*")
 public class BookController extends HttpServlet {
 
-    private final transient BookService service = BookServiceImpl.getInstance();
+    private transient BookService service = BookServiceImpl.getInstance();
     private final ObjectMapper objectMapper;
 
     private static final String BAD_REQUEST = "Bad request";

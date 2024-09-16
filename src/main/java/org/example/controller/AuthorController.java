@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet(value = "/author/*")
 public class AuthorController extends HttpServlet {
 
-    private final transient AuthorServiceImpl service = AuthorServiceImpl.getInstance();
+    private transient AuthorServiceImpl service = AuthorServiceImpl.getInstance();
     private final ObjectMapper objectMapper;
 
     private static final String BAD_REQUEST = "Bad request";
